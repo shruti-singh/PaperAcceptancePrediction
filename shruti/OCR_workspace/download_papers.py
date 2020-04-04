@@ -10,11 +10,15 @@ def read_pdf_file():
 def download_files(year, url_dict):
     counter = 1
     for k, v in url_dict.items():
-        org_url = "https://openreview.net" + v
-        wget.download(org_url, "./science-parse/input/{}/{}.pdf".format(year, k))
-        counter += 1
-        if counter % 50 == 0:
-            print("Finished downloading %d" % counter)
+        try:
+            org_url = "https://openreview.net" + v
+            wget.download(org_url, "./science-parse/input/{}/{}.pdf".format(year, k))
+            counter += 1
+            if counter % 50 == 0:
+                print("Finished downloading %d" % counter)
+        except Exception as ex:
+            print("Error for id: %s" % k)
+            print(ex)
     return
 
 links_dict = read_pdf_file()
