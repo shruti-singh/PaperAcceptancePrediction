@@ -15,7 +15,7 @@ def download_files(year, url_dict):
         counter += 1
         if counter % 50 == 0:
             print("Finished downloading %d" % counter)
-        return
+    return
 
 links_dict = read_pdf_file()
 download_files(2017, links_dict[2017])
