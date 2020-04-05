@@ -13,7 +13,7 @@ def download_files(year, url_dict):
         try:
             if counter % 20 == 0:
                 print("Finished downloading %d" % counter, flush=True)
-            if "arxiv" in v:
+            if "http" in v or "https" in v:
                 org_url = v
             else:
                 org_url = "https://openreview.net" + v
