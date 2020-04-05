@@ -8,17 +8,20 @@ def read_pdf_file():
 
 
 def download_files(year, url_dict):
-    counter = 1
+    counter = 0
     for k, v in url_dict.items():
         try:
-            if counter % 50 == 0:
-                print("Finished downloading %d" % counter)
-            org_url = "https://openreview.net" + v
+            if counter % 20 == 0:
+                print("Finished downloading %d" % counter, flush=True)
+            if "arxiv" in v:
+                org_url = v
+            else:
+                org_url = "https://openreview.net" + v
             wget.download(org_url, "./science-parse/input/{}/{}.pdf".format(year, k))
             counter += 1
         except Exception as ex:
-            print("Error for id: %s and url: %s" %(k, org_url))
-            print(ex)
+            print("Error for id: %s and url: %s" %(k, org_url), flush=True)
+            print(ex, flush=True)
     return
 
 links_dict = read_pdf_file()
