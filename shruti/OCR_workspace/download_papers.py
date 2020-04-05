@@ -24,5 +24,31 @@ def download_files(year, url_dict):
             print(ex, flush=True)
     return
 
+def download_files_2020(url_dict):
+    year = 2020
+    counter = 0
+    for k, v in url_dict.items():
+        if counter % 20 == 0:
+            print("Finished downloading %d" % counter, flush=True)
+        try:
+            if "http" in v or "https" in v:
+                org_url = v
+            else:
+                org_url = "https://openreview.net" + v
+            wget.download(org_url, "./science-parse/input/{}/{}.pdf".format(year, k))
+            counter += 1
+        except Exception as ex:
+            try:
+                org_url = "https://openreview.net/pdf?id={}".format(k)
+                wget.download(org_url, "./science-parse/input/{}/{}.pdf".format(year, k))
+                counter += 1
+            except Exception as ex:
+                print("Error for id: %s and url: %s" %(k, org_url), flush=True)
+                print(ex, flush=True)
+    return
+
+
 links_dict = read_pdf_file()
-download_files(2017, links_dict[2017])
+#download_files(2017, links_dict[2017])
+
+download_files_2020(links_dict[2020])
