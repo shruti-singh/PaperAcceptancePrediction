@@ -1,4 +1,4 @@
-from glob imoprt glob
+from glob import glob
 import numpy as np
 import json
 import pickle
