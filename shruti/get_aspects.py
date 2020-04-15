@@ -12,9 +12,9 @@ print(len(file_list))
 review_jsons = {}
 
 for f in file_list:
-    d = json.load(f)
+    d = json.load(open(f))
     if "id" in d:
         review_jsons[d["id"]] = d
 
-with open("review_iclr17_peeread.pkl", "wb") as f:
-    f.dump(review_jsons, f)
+with open("reviewratings_iclr17_peeread.pkl", "wb") as f:
+    pickle.dump(review_jsons, f)
