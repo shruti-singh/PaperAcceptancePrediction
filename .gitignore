@@ -1,3 +1,5 @@
 *.png
 *.xlsx
 *.odt
+*.ods
+.ipynb_checkpoints/*
