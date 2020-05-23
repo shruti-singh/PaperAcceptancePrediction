@@ -3,3 +3,6 @@
 *.odt
 *.ods
 .ipynb_checkpoints/*
+shruti/.ipynb_checkpoints/*
+shruti/novelty/.ipynb_checkpoints/*
+shruti/argminingdata/.ipynb_checkpoints/*
